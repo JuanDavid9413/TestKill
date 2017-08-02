@@ -130,9 +130,10 @@
             // 
             // txtCantidadTotal
             // 
-            this.txtCantidadTotal.Location = new System.Drawing.Point(456, 269);
+            this.txtCantidadTotal.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtCantidadTotal.Location = new System.Drawing.Point(477, 269);
             this.txtCantidadTotal.Name = "txtCantidadTotal";
-            this.txtCantidadTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidadTotal.Size = new System.Drawing.Size(79, 20);
             this.txtCantidadTotal.TabIndex = 8;
             // 
             // label1
@@ -164,6 +165,7 @@
             // 
             // txtMoneda50
             // 
+            this.txtMoneda50.BackColor = System.Drawing.Color.Gainsboro;
             this.txtMoneda50.Location = new System.Drawing.Point(449, 346);
             this.txtMoneda50.Name = "txtMoneda50";
             this.txtMoneda50.Size = new System.Drawing.Size(32, 20);
@@ -171,6 +173,7 @@
             // 
             // txtMonedas100
             // 
+            this.txtMonedas100.BackColor = System.Drawing.Color.Gainsboro;
             this.txtMonedas100.Location = new System.Drawing.Point(508, 346);
             this.txtMonedas100.Name = "txtMonedas100";
             this.txtMonedas100.Size = new System.Drawing.Size(32, 20);
@@ -178,6 +181,7 @@
             // 
             // txtMonedas200
             // 
+            this.txtMonedas200.BackColor = System.Drawing.Color.Gainsboro;
             this.txtMonedas200.Location = new System.Drawing.Point(583, 346);
             this.txtMonedas200.Name = "txtMonedas200";
             this.txtMonedas200.Size = new System.Drawing.Size(32, 20);
@@ -185,6 +189,7 @@
             // 
             // txtMonedas1000
             // 
+            this.txtMonedas1000.BackColor = System.Drawing.Color.Gainsboro;
             this.txtMonedas1000.Location = new System.Drawing.Point(551, 416);
             this.txtMonedas1000.Name = "txtMonedas1000";
             this.txtMonedas1000.Size = new System.Drawing.Size(32, 20);
@@ -192,6 +197,7 @@
             // 
             // txtMonedas500
             // 
+            this.txtMonedas500.BackColor = System.Drawing.Color.Gainsboro;
             this.txtMonedas500.Location = new System.Drawing.Point(477, 416);
             this.txtMonedas500.Name = "txtMonedas500";
             this.txtMonedas500.Size = new System.Drawing.Size(32, 20);
@@ -219,6 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(650, 567);
             this.Controls.Add(this.txtMonedas1000);
             this.Controls.Add(this.txtMonedas500);
