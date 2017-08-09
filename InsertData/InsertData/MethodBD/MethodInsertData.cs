@@ -20,13 +20,14 @@ namespace InsertData
         #endregion
 
         #region Methods
-        public void InsertData()
+        public void InsertData(int id, List<InfoDataModel> vDataModel)
         {
             try
             {
                 using (vSqlCommand = new SqlCommand("InsertInfo", vSqlImplement.vCurrentConnection))
                 {
                     vSqlCommand.CommandType = CommandType.StoredProcedure;
+                    vSqlCommand.Parameters.Add("@Id",vDataModel);
 
                 }
             }
