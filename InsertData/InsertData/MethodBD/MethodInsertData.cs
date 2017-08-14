@@ -27,8 +27,17 @@ namespace InsertData
                 using (vSqlCommand = new SqlCommand("InsertInfo", vSqlImplement.vCurrentConnection))
                 {
                     vSqlCommand.CommandType = CommandType.StoredProcedure;
-                    vSqlCommand.Parameters.Add("@Id",vDataModel);
-
+                    foreach (InfoDataModel vInfoData in vDataModel)
+                    {
+                        vSqlCommand.Parameters.AddWithValue("@oNombre", vInfoData.Nombre);
+                        vSqlCommand.Parameters.AddWithValue("@oApellido", vInfoData.Apellido);
+                        vSqlCommand.Parameters.AddWithValue("@oCiudad", vInfoData.Ciudad);
+                        vSqlCommand.Parameters.AddWithValue("@oFecha", vInfoData.Fecha);
+                    }                    
+                    //vSqlCommand.Parameters.AddWithValue("@Id", from value in vDataModel where  );
+                    vSqlImplement.ConnectionOpen();
+                    vSqlCommand.ExecuteNonQuery();
+                    vSqlImplement.ConnectionClose();
                 }
             }
             catch
@@ -43,7 +52,7 @@ namespace InsertData
             {
                 using (vSqlDataAdapter = new SqlDataAdapter("GetInfo", vSqlImplement.vCurrentConnection))
                 {
-                    vSqlCommand.CommandType = CommandType.StoredProcedure;
+                    vSqlDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                     vSqlImplement.ConnectionOpen();
                     vSqlDataAdapter.Fill(vDataSet);
                     vSqlImplement.ConnectionClose();
