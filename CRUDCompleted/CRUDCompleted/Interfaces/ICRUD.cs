@@ -11,6 +11,7 @@ namespace CRUDCompleted
         void InsertInfo(List<InfoDataModel> vDataModel);
         void UpdateInfo(List<InfoDataModel> vDataModel);
         void DeleteInfo(List<InfoDataModel> vDataModel);
+        DataSet SearchData(List<InfoDataModel> vDataModel);
         DataSet GetInfo();
 
     }

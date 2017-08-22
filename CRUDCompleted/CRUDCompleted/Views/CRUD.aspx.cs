@@ -20,8 +20,12 @@ namespace CRUDCompleted.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = vCRUDController.GetInfo();
-            GridView1.DataBind();
+            if (!IsPostBack)
+            {
+                GridView1.DataSource = vCRUDController.GetInfo();
+                GridView1.DataBind();
+            }
+            
         }
 
         #region Methods
@@ -61,6 +65,11 @@ namespace CRUDCompleted.Views
         {
             vCRUDController.UpdateInfo(InfoDataModel());
             BorrarData();
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = vCRUDController.SearchData(InfoDataModel());
+            GridView1.DataBind();
         }
 
         public void BorrarData()

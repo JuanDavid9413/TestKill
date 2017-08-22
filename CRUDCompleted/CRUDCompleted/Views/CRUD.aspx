@@ -26,8 +26,9 @@
         <br />
         <br />
         <asp:Button ID="btnInsert" runat="server" Text="Insertar" OnClick="btnInsert_Click" /> &nbsp
-        <asp:Button ID="btnDelete" runat="server" Text="Eliminar" OnClick="btnDelete_Click" />&nbsp
-        <asp:Button ID="btnUpdate" runat="server" Text="Actualizar" OnClick="btnUpdate_Click" />
+        <asp:Button ID="btnDelete" runat="server" Text="Eliminar" OnClick="btnDelete_Click" /> &nbsp
+        <asp:Button ID="btnUpdate" runat="server" Text="Actualizar" OnClick="btnUpdate_Click" /> &nbsp
+        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
 
         <br />
         <br />

@@ -88,6 +88,33 @@ namespace CRUDCompleted
                 throw;
             }
         }
+        public DataSet SearchData(List<InfoDataModel> oInfoDataModel)
+        {
+            try
+            {
+                using (vDataAdapter = new SqlDataAdapter("SearchInfo", vSQLServerDAO.vCurrentConnection))
+                {
+                    foreach (InfoDataModel vInfoDataModel in oInfoDataModel)
+                    {
+                        //vDataAdapter.SelectCommand.Parameters.AddWithValue("@oCodigo", vInfoDataModel.Codigo);
+                        vDataAdapter.SelectCommand.Parameters.AddWithValue("@oNombre", vInfoDataModel.Nombre);
+                        //vDataAdapter.SelectCommand.Parameters.AddWithValue("@oApellido", vInfoDataModel.Apellidos);
+                        //vDataAdapter.SelectCommand.Parameters.AddWithValue("@oCiudad", vInfoDataModel.Ciudad);
+                        //vDataAdapter.SelectCommand.Parameters.AddWithValue("@oFecha", vInfoDataModel.Fecha);
+                    }
+                    vDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    vSQLServerDAO.ConnectionOpen();
+                    vDataAdapter.Fill(vDataSet);
+                    vSQLServerDAO.ConnectionClose();
+                    
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return vDataSet;
+        }
         public DataSet GetInfo()
         {
             try
