@@ -11,9 +11,9 @@ namespace CRUDMVC
         #region CRUD
 
         #region Client
-        int ClientInsert(List<ClientModel> vClientData);
-        int ClientDelete(List<ClientModel> vClientData);
-        int ClientUpdate(List<ClientModel> vClientData);
+        int? ClientInsert(List<ClientModel> vClientData);
+        int? ClientDelete(List<ClientModel> vClientData);
+        int? ClientUpdate(List<ClientModel> vClientData);
         List<ClientModel> GetClients();
         #endregion
 

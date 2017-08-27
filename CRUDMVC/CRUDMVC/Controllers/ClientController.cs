@@ -4,86 +4,77 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CRUDMVC.Controllers
+namespace CRUDMVC
 {
     public class ClientController : Controller
     {
         // GET: Client
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult GetClientAll()
         {
-            return View();
-        }
-
-        // GET: Client/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            SQLImplement oClient = new SQLImplement();
+            //ModelState.Clear();
+            return View(oClient.GetClients());
         }
 
         // GET: Client/Create
-        public ActionResult Create()
+        public ActionResult CreateClient()
         {
             return View();
         }
 
         // POST: Client/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateClient(ClientModel oClientModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                List<ClientModel> listClientModel = new List<ClientModel>();
+                listClientModel.Add(oClientModel);
 
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    SQLImplement oClient = new SQLImplement();
+                    if (oClient.ClientInsert(listClientModel) != null)
+                    {
+                        ViewBag.Message = "Se inserto correctamente el cliente";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "No se realizo la insercion ";
+                    }
+                }
+
+                return RedirectToAction("CreateClient");
             }
             catch
             {
-                return View();
+                return View(oClientModel);
             }
         }
 
         // GET: Client/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditClient(ClientModel vClientData)
         {
-            return View();
-        }
+            List<ClientModel> listClientModel = new List<ClientModel>();
+            listClientModel.Add(vClientData);
 
-        // POST: Client/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add update logic here
+                //Instance Object SqlImplemt
+                SQLImplement oClient = new SQLImplement();
 
-                return RedirectToAction("Index");
+                if (oClient.ClientUpdate(listClientModel) != null)
+                {
+                    ViewBag.Message = "";
+                }
             }
             catch
             {
-                return View();
+                throw;
             }
-        }
-
-        // GET: Client/Delete/5
-        public ActionResult Delete(int id)
-        {
             return View();
         }
-
-        // POST: Client/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }
