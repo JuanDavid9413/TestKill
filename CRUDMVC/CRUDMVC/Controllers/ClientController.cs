@@ -54,10 +54,10 @@ namespace CRUDMVC
         }
 
         // GET: Client/Edit/5
-        public ActionResult EditClient(ClientModel vClientData)
+        public ActionResult EditClient(ClientModel oClientData)
         {
             List<ClientModel> listClientModel = new List<ClientModel>();
-            listClientModel.Add(vClientData);
+            listClientModel.Add(oClientData);
 
             try
             {
@@ -76,5 +76,22 @@ namespace CRUDMVC
             return View();
         }
        
+        public ActionResult DeleteClient(ClientModel oClientData)
+        {
+            try
+            {
+                SQLImplement vDeleteClient = new SQLImplement();
+                List<ClientModel> vListClientModel = new List<ClientModel>();
+                vListClientModel.Add(oClientData);
+                vDeleteClient.ClientDelete(vListClientModel);
+
+                ViewBag.Message("Delete Correctamente");
+            }
+            catch
+            {
+                ViewBag.Message("One Error");
+            }
+            return View();
+        }
     }
 }
