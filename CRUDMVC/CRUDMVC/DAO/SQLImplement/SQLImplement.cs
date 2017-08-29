@@ -24,7 +24,7 @@ namespace CRUDMVC
         #region Client
         public int? ClientInsert(List<ClientModel> oClientData)
         {
-            using (SqlCommand vSqlCommand = new SqlCommand("ClienteInsert", vSqlImplement.vCurrentConnection))
+            using (SqlCommand vSqlCommand = new SqlCommand("ClientInsert", vSqlImplement.vCurrentConnection))
             {
                 foreach (ClientModel vClientModel in oClientData)
                 {

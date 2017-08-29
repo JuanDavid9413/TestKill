@@ -8,6 +8,11 @@ namespace CRUDMVC
 {
     public class ClientController : Controller
     {
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
         // GET: Client
         [HttpGet]
         public ActionResult GetClientAll()
@@ -49,7 +54,7 @@ namespace CRUDMVC
             }
             catch
             {
-                return View(oClientModel);
+                throw;
             }
         }
 
@@ -66,7 +71,7 @@ namespace CRUDMVC
 
                 if (oClient.ClientUpdate(listClientModel) != null)
                 {
-                    ViewBag.Message = "";
+                    ViewBag.Message = "Se edito correctamente";
                 }
             }
             catch
@@ -75,7 +80,8 @@ namespace CRUDMVC
             }
             return View();
         }
-       
+
+       [HttpPost]
         public ActionResult DeleteClient(ClientModel oClientData)
         {
             try
