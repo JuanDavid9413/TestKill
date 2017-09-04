@@ -58,7 +58,12 @@ namespace CRUDMVC
             }
         }
 
-        // GET: Client/Edit/5
+        public ActionResult EditClient()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult EditClient(ClientModel oClientData)
         {
             List<ClientModel> listClientModel = new List<ClientModel>();
@@ -81,7 +86,12 @@ namespace CRUDMVC
             return View();
         }
 
-       [HttpPost]
+        public ActionResult DeleteClient()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult DeleteClient(ClientModel oClientData)
         {
             try

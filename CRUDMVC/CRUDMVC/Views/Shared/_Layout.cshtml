@@ -19,8 +19,13 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+            <br/>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Crear Cliente", "CreateClient")</li>
+                    <li>@Html.ActionLink("Editar", "EditClient")</li>
+                    <li>@Html.ActionLink("Eliminar Cliente", "DeleteClient")</li>
+                    <li>@Html.ActionLink("Mostrar todos", "GetClientAll")</li>
                 </ul>
             </div>
         </div>
