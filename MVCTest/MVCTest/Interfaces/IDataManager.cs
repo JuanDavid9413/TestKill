@@ -8,9 +8,9 @@ namespace MVCTest
 {
     public interface IDataManager
     {
-        int? DeleteClient(ClientModel oClientModel);
-        int? UpdateClient(ClientModel oClientModel);
-        int? InsertClient(ClientModel oClientModel);
+        int? DeleteClient(List<ClientModel> oClientModel);
+        int? UpdateClient(List<ClientModel> oClientModel);
+        int? InsertClient(List<ClientModel> oClientModel);
         List<ClientModel> GetAllClient();
     }
 }
