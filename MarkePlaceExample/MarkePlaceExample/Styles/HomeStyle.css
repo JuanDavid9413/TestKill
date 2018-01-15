@@ -1,0 +1,40 @@
+﻿/*Generic Styles*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*Slider Styles*/
+
+#ContentSlider {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#Slider {
+    margin: 0;
+    padding:0 ;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.ElementSlider {
+    width: 1000px;
+    height: 563px;
+    margin: 0;
+    padding:0 ;
+    position:relative;
+    display:none
+}
+
+.ElementVisible {
+    display:block;
+}
