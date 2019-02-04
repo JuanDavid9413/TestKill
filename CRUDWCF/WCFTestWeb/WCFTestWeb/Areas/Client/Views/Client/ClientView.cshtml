@@ -1,0 +1,44 @@
+﻿@model WCFTestWeb.Areas.Client.Models.ClientViewModel
+
+@{
+    ViewBag.Title = "ClientView";
+}
+
+<h2>ClientView</h2>
+
+@using (Html.BeginForm())
+{
+    <form>
+        <div>
+            <label>Id</label>
+            <br />
+            @Html.TextBoxFor(x => x.Id, new  { id = "inputId" })
+        </div>
+        <div>
+            <label>Name</label>
+            <br />
+            @Html.TextBoxFor(x => x.Name, new { id = "inputName" })
+        </div>
+        <div>
+            <label>LastName</label>
+            <br />
+            @Html.TextBoxFor(x => x.LastName, new { id = "inputLastName" })
+        </div>
+        <div>
+            <label>Age</label>
+            <br />
+            @Html.TextBoxFor(x => x.Age, new { id = "inputAge" })
+        </div>
+        <button id="btnInsert">Insert</button>
+        <button id="btnUpdate">Update</button>
+        <button id="btnDelete">Delete</button>
+    </form>
+
+    <div id="TableClient"></div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/Client")
+}
+

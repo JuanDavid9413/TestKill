@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AppEntityFramework.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Cliente</h4>
+   
+    <table border="10">
+        <tr>
+            <td style="border: 10px;">@Html.DisplayNameFor(Model => Model.Id)</td>
+            <td>@Html.DisplayNameFor(Model => Model.Name)</td>
+            <td>@Html.DisplayNameFor(Model => Model.LastName)</td>
+            <td>@Html.DisplayNameFor(Model => Model.Sexo)</td>
+            <td>@Html.DisplayNameFor(Model => Model.City)</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelitem => item.Id)</td>
+                <td>@Html.DisplayFor(modelitem => item.Name)</td>
+                <td>@Html.DisplayFor(modelitem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelitem => item.Sexo)</td>
+                <td>@Html.DisplayFor(modelitem => item.City)</td>
+            </tr>
+        }
+    </table>
+</div>

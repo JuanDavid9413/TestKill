@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EntityFrameworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PARAMETERS_GENERAL">
+          <Key>
+            <PropertyRef Name="ID_PARAMETER_GENERAL" />
+          </Key>
+          <Property Name="ID_PARAMETER_GENERAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USERS" Type="int" />
+          <Property Name="CODE_PAREMETER" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PARAMETER_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="VALUE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LAST_MODIFICATION" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID_USERS" />
+          </Key>
+          <Property Name="ID_USERS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOCUMENT" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PARAMETER__LAST___398D8EEE">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="PARAMETERS_GENERAL" Type="Self.PARAMETERS_GENERAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USERS" />
+            </Principal>
+            <Dependent Role="PARAMETERS_GENERAL">
+              <PropertyRef Name="ID_USERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntityFrameworkModelStoreContainer">
+          <EntitySet Name="PARAMETERS_GENERAL" EntityType="Self.PARAMETERS_GENERAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PARAMETER__LAST___398D8EEE" Association="Self.FK__PARAMETER__LAST___398D8EEE">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PARAMETERS_GENERAL" EntitySet="PARAMETERS_GENERAL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EntityFrameworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PARAMETERS_GENERAL">
+          <Key>
+            <PropertyRef Name="ID_PARAMETER_GENERAL" />
+          </Key>
+          <Property Name="ID_PARAMETER_GENERAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USERS" Type="Int32" />
+          <Property Name="CODE_PAREMETER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PARAMETER_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_MODIFICATION" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__PARAMETER__LAST___398D8EEE" FromRole="PARAMETERS_GENERAL" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID_USERS" />
+          </Key>
+          <Property Name="ID_USERS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOCUMENT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PARAMETERS_GENERAL" Relationship="Self.FK__PARAMETER__LAST___398D8EEE" FromRole="USERS" ToRole="PARAMETERS_GENERAL" />
+        </EntityType>
+        <Association Name="FK__PARAMETER__LAST___398D8EEE">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="PARAMETERS_GENERAL" Type="Self.PARAMETERS_GENERAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USERS" />
+            </Principal>
+            <Dependent Role="PARAMETERS_GENERAL">
+              <PropertyRef Name="ID_USERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConnectionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PARAMETERS_GENERAL" EntityType="Self.PARAMETERS_GENERAL" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <AssociationSet Name="FK__PARAMETER__LAST___398D8EEE" Association="Self.FK__PARAMETER__LAST___398D8EEE">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PARAMETERS_GENERAL" EntitySet="PARAMETERS_GENERAL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EntityFrameworkModelStoreContainer" CdmEntityContainer="ConnectionEntities">
+          <EntitySetMapping Name="PARAMETERS_GENERAL">
+            <EntityTypeMapping TypeName="EntityFrameworkModel.PARAMETERS_GENERAL">
+              <MappingFragment StoreEntitySet="PARAMETERS_GENERAL">
+                <ScalarProperty Name="ID_PARAMETER_GENERAL" ColumnName="ID_PARAMETER_GENERAL" />
+                <ScalarProperty Name="ID_USERS" ColumnName="ID_USERS" />
+                <ScalarProperty Name="CODE_PAREMETER" ColumnName="CODE_PAREMETER" />
+                <ScalarProperty Name="PARAMETER_NAME" ColumnName="PARAMETER_NAME" />
+                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="LAST_MODIFICATION" ColumnName="LAST_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="EntityFrameworkModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID_USERS" ColumnName="ID_USERS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="DOCUMENT" ColumnName="DOCUMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

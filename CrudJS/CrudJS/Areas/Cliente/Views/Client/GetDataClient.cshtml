@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CrudJS.Areas.Cliente.Models.ClientViewModel>
+
+@{
+    WebGrid webGrid = new WebGrid(Model);
+}
+
+@webGrid.GetHtml(
+    htmlAttributes: new { id ="TableClient" },
+    columns: webGrid.Columns(
+            webGrid.Column(header: "Id", columnName: "Id"),
+            webGrid.Column(header: "Name", columnName: "Name"),
+            webGrid.Column(header: "LastName", columnName: "LastName"),
+            webGrid.Column(header: "Age", columnName: "Age")
+        )
+    )
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/Client");
+}

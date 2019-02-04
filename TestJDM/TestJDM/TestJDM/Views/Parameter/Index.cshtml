@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TestJDM.Models.PARAMETERS_GENERAL>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid webGrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    webGrid.Pager(WebGridPagerModes.All);
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Parameter", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Parametro General de Consulta</legend>
+        Codigo
+        <input type="text" id="Codigo" name="Codigo" />
+        Nombre
+        <input type="text" name="Name" />
+
+        <button type="submit">Buscar</button>
+    </fieldset>
+}
+<div id="SearchContent">
+    @webGrid.GetHtml(columns: new[] {
+    webGrid.Column("CODE_PAREMETER", header: "Código"),
+    webGrid.Column("PARAMETER_NAME", header: "Nombre"),
+    webGrid.Column("DATA_TYPE", header: "Tipo Dato"),
+    webGrid.Column("VALUE", header: "Valor"),
+    webGrid.Column(header: "Edit", format: (item) =>
+    {
+        var Link  = Html.ActionLink("Editar","UpdateParameter", new {id = item.ID_USERS});
+        return Link;
+    })
+})
+</div>
+

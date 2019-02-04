@@ -1,0 +1,46 @@
+﻿@model CrudJS.Areas.Cliente.Models.ClientViewModel
+
+@{
+    ViewBag.Title = "ClientView";
+}
+
+<h2>ClientView</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <form id="FormClient">
+            <div>
+                <label>Id</label>
+                @Html.TextBoxFor(x => x.Id, new { id = "inputId" })
+            </div>
+            <div>
+                <label>Name</label>
+                @Html.TextBoxFor(x => x.Name, new { id = "inputName" })
+            </div>
+            <div>
+                <label>LastName</label>
+                @Html.TextBoxFor(x => x.LastName, new { id = "inputLastName" })
+            </div>
+            <div>
+                <label>Age</label>
+                @Html.TextBoxFor(x => x.Age, new { id = "inputAge" })
+            </div>
+            <div>
+                <button id="btnInsert">Insert</button>
+                <button id="btnUpdate">Update</button>
+                <button id="btnDelete">Delete</button>
+            </div>
+        </form>
+        <table id="GridTable"></table>
+        @*@Html.Partial("~/Areas/Cliente/Views/Client/GetDataClient.cshtml",Model)*@
+    </div>
+
+
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/Client");
+    @Scripts.Render("~/bundles/jquery");
+}
+

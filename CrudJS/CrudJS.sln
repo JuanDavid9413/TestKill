@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudJS", "CrudJS\CrudJS.csproj", "{56395849-4CA1-4FBB-BAD5-A03F54B9D5A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56395849-4CA1-4FBB-BAD5-A03F54B9D5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56395849-4CA1-4FBB-BAD5-A03F54B9D5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56395849-4CA1-4FBB-BAD5-A03F54B9D5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56395849-4CA1-4FBB-BAD5-A03F54B9D5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF65AE30-5BB3-4410-8017-9A45E48A0311}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://softcontrive.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CrudJS\\CrudJS.csproj
+		SccProjectName1 = CrudJS
+		SccLocalPath1 = CrudJS
+	EndGlobalSection
+EndGlobal

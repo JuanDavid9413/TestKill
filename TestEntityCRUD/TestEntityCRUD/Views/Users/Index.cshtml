@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TestEntityCRUD.Models.USERS>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid webGrid = new WebGrid(Model);
+}
+
+<h2>Index</h2>
+
+@webGrid.GetHtml(
+        columns: webGrid.Columns(
+            webGrid.Column(header: "Edit", format: (item) =>
+            {
+                var link = Html.ActionLink("Editar", "UpdateClient", new { id = item.ID_USER });
+                return link;
+            }),
+            webGrid.Column("ID_USER",header: "id"),
+            webGrid.Column("NAME", header:  "Name"),
+            webGrid.Column("LastName", header: "LastName"),
+            webGrid.Column("City", header: "City"),
+            webGrid.Column("DATE_CREATE", header: "Date Create")
+            )
+
+    );

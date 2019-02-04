@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ManagerDataClient" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:18571/ManagerDataClient.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:18571/ManagerDataClient.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:18571/ManagerDataClient.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ModelsSApplications.ModelsServices" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICustomClient_ManagerInsetClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerInsetClient" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManagerInsetClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerInsetClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManegerUpdateClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManegerUpdateClient" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManegerUpdateClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManegerUpdateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManagerDeleteClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerDeleteClient" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManagerDeleteClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerDeleteClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManagerGetDataClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerGetDataClient" />
+  </wsdl:message>
+  <wsdl:message name="ICustomClient_ManagerGetDataClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManagerGetDataClientResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICustomClient">
+    <wsdl:operation name="ManagerInsetClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomClient/ManagerInsetClient" message="tns:ICustomClient_ManagerInsetClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomClient/ManagerInsetClientResponse" message="tns:ICustomClient_ManagerInsetClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManegerUpdateClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomClient/ManegerUpdateClient" message="tns:ICustomClient_ManegerUpdateClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomClient/ManegerUpdateClientResponse" message="tns:ICustomClient_ManegerUpdateClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManagerDeleteClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomClient/ManagerDeleteClient" message="tns:ICustomClient_ManagerDeleteClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomClient/ManagerDeleteClientResponse" message="tns:ICustomClient_ManagerDeleteClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManagerGetDataClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomClient/ManagerGetDataClient" message="tns:ICustomClient_ManagerGetDataClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomClient/ManagerGetDataClientResponse" message="tns:ICustomClient_ManagerGetDataClient_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICustomClient" type="tns:ICustomClient">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ManagerInsetClient">
+      <soap:operation soapAction="http://tempuri.org/ICustomClient/ManagerInsetClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManegerUpdateClient">
+      <soap:operation soapAction="http://tempuri.org/ICustomClient/ManegerUpdateClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManagerDeleteClient">
+      <soap:operation soapAction="http://tempuri.org/ICustomClient/ManagerDeleteClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManagerGetDataClient">
+      <soap:operation soapAction="http://tempuri.org/ICustomClient/ManagerGetDataClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ManagerDataClient">
+    <wsdl:port name="BasicHttpBinding_ICustomClient" binding="tns:BasicHttpBinding_ICustomClient">
+      <soap:address location="http://localhost:18571/ManagerDataClient.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

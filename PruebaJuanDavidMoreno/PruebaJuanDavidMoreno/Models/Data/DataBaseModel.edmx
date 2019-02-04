@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PruebaJuanDavidMorenoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PARAMETER">
+          <Key>
+            <PropertyRef Name="ID_PARAMETER" />
+          </Key>
+          <Property Name="ID_PARAMETER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="NAME_PRODUCTO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="LAST_MODIFICATION" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PARAMETER_ITEMS">
+          <Key>
+            <PropertyRef Name="ID_PITEMS" />
+          </Key>
+          <Property Name="ID_PITEMS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PARAMETER" Type="int" Nullable="false" />
+          <Property Name="TYPE_DATA" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="VALUE" Type="varchar" MaxLength="50" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="LAST_MODIFICATION" Type="datetime" Nullable="false" />
+          <Property Name="ID_USER" Type="int" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="LAST_MODIFICATION" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PARAMETER__ID_US__32E0915F">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="PARAMETER_ITEMS" Type="Self.PARAMETER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="PARAMETER_ITEMS">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PARAMETER">
+          <End Role="PARAMETER" Type="Self.PARAMETER" Multiplicity="1" />
+          <End Role="PARAMETER_ITEMS" Type="Self.PARAMETER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAMETER">
+              <PropertyRef Name="ID_PARAMETER" />
+            </Principal>
+            <Dependent Role="PARAMETER_ITEMS">
+              <PropertyRef Name="ID_PARAMETER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PruebaJuanDavidMorenoModelStoreContainer">
+          <EntitySet Name="PARAMETER" EntityType="Self.PARAMETER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PARAMETER_ITEMS" EntityType="Self.PARAMETER_ITEMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PARAMETER__ID_US__32E0915F" Association="Self.FK__PARAMETER__ID_US__32E0915F">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PARAMETER_ITEMS" EntitySet="PARAMETER_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PARAMETER" Association="Self.FK_ID_PARAMETER">
+            <End Role="PARAMETER" EntitySet="PARAMETER" />
+            <End Role="PARAMETER_ITEMS" EntitySet="PARAMETER_ITEMS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PruebaJuanDavidMorenoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PARAMETER">
+          <Key>
+            <PropertyRef Name="ID_PARAMETER" />
+          </Key>
+          <Property Name="ID_PARAMETER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LAST_MODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PARAMETER_ITEMS" Relationship="Self.FK_ID_PARAMETER" FromRole="PARAMETER" ToRole="PARAMETER_ITEMS" />
+        </EntityType>
+        <EntityType Name="PARAMETER_ITEMS">
+          <Key>
+            <PropertyRef Name="ID_PITEMS" />
+          </Key>
+          <Property Name="ID_PITEMS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PARAMETER" Type="Int32" Nullable="false" />
+          <Property Name="TYPE_DATA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LAST_MODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PARAMETER" Relationship="Self.FK_ID_PARAMETER" FromRole="PARAMETER_ITEMS" ToRole="PARAMETER" />
+          <Property Name="ID_USER" Type="Int32" />
+          <NavigationProperty Name="USERS" Relationship="PruebaJuanDavidMorenoModel.FK__PARAMETER__ID_US__32E0915F" FromRole="PARAMETER_ITEMS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LAST_MODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PARAMETER_ITEMS" Relationship="PruebaJuanDavidMorenoModel.FK__PARAMETER__ID_US__32E0915F" FromRole="USERS" ToRole="PARAMETER_ITEMS" />
+        </EntityType>
+        <Association Name="FK_ID_PARAMETER">
+          <End Role="PARAMETER" Type="Self.PARAMETER" Multiplicity="1" />
+          <End Role="PARAMETER_ITEMS" Type="Self.PARAMETER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARAMETER">
+              <PropertyRef Name="ID_PARAMETER" />
+            </Principal>
+            <Dependent Role="PARAMETER_ITEMS">
+              <PropertyRef Name="ID_PARAMETER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PARAMETER" EntityType="Self.PARAMETER" />
+          <EntitySet Name="PARAMETER_ITEMS" EntityType="Self.PARAMETER_ITEMS" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <AssociationSet Name="FK_ID_PARAMETER" Association="Self.FK_ID_PARAMETER">
+            <End Role="PARAMETER" EntitySet="PARAMETER" />
+            <End Role="PARAMETER_ITEMS" EntitySet="PARAMETER_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARAMETER__ID_US__32E0915F" Association="PruebaJuanDavidMorenoModel.FK__PARAMETER__ID_US__32E0915F">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PARAMETER_ITEMS" EntitySet="PARAMETER_ITEMS" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK__PARAMETER__ID_US__32E0915F">
+          <End Type="PruebaJuanDavidMorenoModel.USERS" Role="USERS" Multiplicity="0..1" />
+          <End Type="PruebaJuanDavidMorenoModel.PARAMETER_ITEMS" Role="PARAMETER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="PARAMETER_ITEMS">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PruebaJuanDavidMorenoModelStoreContainer" CdmEntityContainer="DataBaseEntities">
+          <EntitySetMapping Name="PARAMETER">
+            <EntityTypeMapping TypeName="PruebaJuanDavidMorenoModel.PARAMETER">
+              <MappingFragment StoreEntitySet="PARAMETER">
+                <ScalarProperty Name="ID_PARAMETER" ColumnName="ID_PARAMETER" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="NAME_PRODUCTO" ColumnName="NAME_PRODUCTO" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LAST_MODIFICATION" ColumnName="LAST_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETER_ITEMS">
+            <EntityTypeMapping TypeName="PruebaJuanDavidMorenoModel.PARAMETER_ITEMS">
+              <MappingFragment StoreEntitySet="PARAMETER_ITEMS">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID_PITEMS" ColumnName="ID_PITEMS" />
+                <ScalarProperty Name="ID_PARAMETER" ColumnName="ID_PARAMETER" />
+                <ScalarProperty Name="TYPE_DATA" ColumnName="TYPE_DATA" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LAST_MODIFICATION" ColumnName="LAST_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="PruebaJuanDavidMorenoModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LAST_MODIFICATION" ColumnName="LAST_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
