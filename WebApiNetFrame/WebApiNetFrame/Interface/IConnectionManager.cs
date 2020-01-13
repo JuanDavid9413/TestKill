@@ -13,7 +13,7 @@ namespace WebApiNetFrame.Interface
 
         ClientViewModel UpdateClient(ClientViewModel clientViewModel);
 
-        bool DeleteClient(ClientViewModel clientViewModel);
+        bool DeleteClient(int Id);
 
         List<ClientViewModel> GetClients();
         

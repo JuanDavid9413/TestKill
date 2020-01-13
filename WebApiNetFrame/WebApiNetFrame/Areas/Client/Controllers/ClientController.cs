@@ -43,11 +43,13 @@ namespace WebApiNetFrame.Areas.Client.Controllers
         }
 
         [HttpPut]
-        public void UpdateClient()
+        public IHttpActionResult UpdateClient([FromUri]ClientViewModel clientViewModel)
         {
             try
             {
-
+                ConnectionManager connectionManager = new ConnectionManager();
+                var result = connectionManager.UpdateClient(clientViewModel);
+                return Json(result);
             }
             catch (Exception ex)
             {
@@ -56,11 +58,13 @@ namespace WebApiNetFrame.Areas.Client.Controllers
         }
 
         [HttpDelete]
-        public void DeleteClient()
+        public IHttpActionResult DeleteClient([FromUri]int Id)
         {
             try
             {
-
+                ConnectionManager connectionManager = new ConnectionManager();
+                var result = connectionManager.DeleteClient(Id);
+                return Json(result);
             }
             catch (Exception ex)
             {

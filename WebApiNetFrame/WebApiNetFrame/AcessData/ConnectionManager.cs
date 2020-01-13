@@ -18,15 +18,18 @@ namespace WebApiNetFrame.AcessData
         {
             try
             {
+                ClientViewModel result = new ClientViewModel();
+                result = clientViewModel;
                 using (SqlCommand = new SqlCommand("InsertClient", Connection.oCurrentConnection))
                 {
                     SqlCommand.CommandType = CommandType.StoredProcedure;
-                    SqlCommand.Parameters.AddWithValue("@Id", clientViewModel.Id);
                     SqlCommand.Parameters.AddWithValue("@Name", clientViewModel.Name);
                     SqlCommand.Parameters.AddWithValue("@LastName", clientViewModel.LastName);
                     SqlCommand.Parameters.AddWithValue("@Age", clientViewModel.Age);
+                    SqlCommand.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
                     Connection.ConnectionManager();
-                    var result = (ClientViewModel)SqlCommand.ExecuteScalar();
+                    SqlCommand.ExecuteNonQuery();
+                    result.Id = (int)SqlCommand.Parameters["@ID"].Value;
                     Connection.ConnectionManager();
                     return result;
                 }
@@ -34,6 +37,7 @@ namespace WebApiNetFrame.AcessData
             }
             catch (Exception ex)
             {
+                Connection.ConnectionManager();
                 throw;
             }
         }
@@ -42,15 +46,17 @@ namespace WebApiNetFrame.AcessData
         {
             try
             {
+                ClientViewModel result = new ClientViewModel();
+                result = clientViewModel;
                 using (SqlCommand = new SqlCommand("UpdateClient", Connection.oCurrentConnection))
                 {
                     SqlCommand.CommandType = CommandType.StoredProcedure;
+                    SqlCommand.Parameters.AddWithValue("@ID", clientViewModel.Id);
                     SqlCommand.Parameters.AddWithValue("@Name", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@Name", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@LastName", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@Age", clientViewModel.Name);
+                    SqlCommand.Parameters.AddWithValue("@LastName", clientViewModel.LastName);
+                    SqlCommand.Parameters.AddWithValue("@Age", clientViewModel.Age);
                     Connection.ConnectionManager();
-                    var result = (ClientViewModel)SqlCommand.ExecuteScalar();
+                    SqlCommand.ExecuteNonQuery();
                     Connection.ConnectionManager();
                     return result;
                 }
@@ -62,19 +68,17 @@ namespace WebApiNetFrame.AcessData
             }
         }
 
-        public bool DeleteClient(ClientViewModel clientViewModel)
+        public bool DeleteClient(int Id)
         {
             try
             {
                 using (SqlCommand = new SqlCommand("DeleteClient", Connection.oCurrentConnection))
                 {
+                    bool result = false;
                     SqlCommand.CommandType = CommandType.StoredProcedure;
-                    SqlCommand.Parameters.AddWithValue("@Name", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@Name", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@LastName", clientViewModel.Name);
-                    SqlCommand.Parameters.AddWithValue("@Age", clientViewModel.Name);
+                    SqlCommand.Parameters.AddWithValue("@Id", Id);
                     Connection.ConnectionManager();
-                    var result = (bool)SqlCommand.ExecuteScalar();
+                    result = Convert.ToBoolean(SqlCommand.ExecuteNonQuery());
                     Connection.ConnectionManager();
                     return result;
                 }
@@ -98,7 +102,7 @@ namespace WebApiNetFrame.AcessData
                 {
                     sqlDataAdapter.Fill(dataTable);
                     dataRow = dataTable.Select();
-                    dataRow.ToList().ForEach(x => 
+                    dataRow.ToList().ForEach(x =>
                     {
                         clientViewModels.Add(new ClientViewModel()
                         {
